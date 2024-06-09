@@ -77,12 +77,8 @@ export async function GET(
     )
       .text()
       .trim();
-    const content = $(
-      "#content .detail__cmain-flex .detail__cmain-main .detail-cmain"
-    )
-      .removeAttr("href")
-      .html()
-      ?.trim();
+    const content =
+      $(".detail-cmain").first().removeAttr("href").html()?.trim() || "";
 
     const relatedNews = await getRelated(
       $(".detail__related").html() as string
